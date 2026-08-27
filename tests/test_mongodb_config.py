@@ -41,6 +41,7 @@ def _client(case_config=None):
     db.vector_field = "vector"
     db.id_field = "id"
     db.case_config = case_config or MongoDBIndexConfig()
+    db._search_filter = None
     db.collection = MagicMock()
     db.collection.aggregate.return_value = [{"id": 7}, {"id": 8}]
     return db

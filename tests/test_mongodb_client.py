@@ -20,15 +20,6 @@ _DB_CONFIG = {
 }
 
 
-class _IndexConfig(MongoDBIndexConfig):
-    """main's search_param() omits exact (sibling PR). Search tests need the key."""
-
-    def search_param(self) -> dict:
-        params = super().search_param()
-        params.setdefault("exact", False)
-        return params
-
-
 def _make_client(with_scalar_labels: bool = False):
     mock_client = MagicMock()
     mock_db = MagicMock()
@@ -44,7 +35,7 @@ def _make_client(with_scalar_labels: bool = False):
         client = MongoDB(
             dim=4,
             db_config=_DB_CONFIG,
-            db_case_config=_IndexConfig(),
+            db_case_config=MongoDBIndexConfig(),
             drop_old=False,
             with_scalar_labels=with_scalar_labels,
         )
