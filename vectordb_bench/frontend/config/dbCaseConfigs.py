@@ -1880,6 +1880,16 @@ CaseConfigParamInput_MongoDBNumCandidatesRatio = CaseConfigInput(
     },
 )
 
+CaseConfigParamInput_MongoDBExact = CaseConfigInput(
+    label=CaseConfigParamType.mongodb_exact,
+    inputType=InputType.Bool,
+    displayLabel="Exact (ENN)",
+    inputHelp="Atlas $vectorSearch exact nearest neighbor. Default False keeps ANN.",
+    inputConfig={
+        "value": False,
+    },
+)
+
 
 CaseConfigParamInput_M_Vespa = CaseConfigInput(
     label=CaseConfigParamType.M,
@@ -2532,6 +2542,7 @@ MongoDBLoadingConfig = [
 MongoDBPerformanceConfig = [
     CaseConfigParamInput_MongoDBQuantizationType,
     CaseConfigParamInput_MongoDBNumCandidatesRatio,
+    CaseConfigParamInput_MongoDBExact,
 ]
 
 CockroachDBLoadingConfig = [
