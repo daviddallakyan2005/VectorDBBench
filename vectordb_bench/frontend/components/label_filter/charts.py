@@ -21,6 +21,7 @@ def drawChartByMetric(st, data, metrics=("qps", "recall"), **kwargs):
 
 
 def getRange(metric, data, padding_multipliers):
+    # dict.get(metric, 0) still returns None when the key is present with a None value.
     values = [d.get(metric) or 0 for d in data]
     minV = min(values)
     maxV = max(values)

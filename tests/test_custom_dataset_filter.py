@@ -33,7 +33,7 @@ def test_custom_dataset_filter_sets_filter_rate_from_label_percentage():
 
 def test_custom_dataset_filter_matches_label_filter_formula():
     case = PerformanceCustomDataset(**_custom_case_kwargs(use_filter=True, label_percentage=0.2))
-    assert case.filter_rate == pytest.approx(1.0 - 0.2)
+    assert case.filter_rate == pytest.approx(LabelFilter(label_percentage=0.2).filter_rate)
 
 
 def test_custom_dataset_without_filter_leaves_filter_rate_unset():
